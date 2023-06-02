@@ -16,6 +16,9 @@
 		91EC9A732A28DE79000E994E /* ChristmasLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A722A28DE79000E994E /* ChristmasLightsTests.swift */; };
 		91EC9A7D2A28DE79000E994E /* ChristmasLightsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A7C2A28DE79000E994E /* ChristmasLightsUITests.swift */; };
 		91EC9A7F2A28DE79000E994E /* ChristmasLightsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A7E2A28DE79000E994E /* ChristmasLightsUITestsLaunchTests.swift */; };
+		91EC9A8C2A28DE95000E994E /* LightGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A8B2A28DE95000E994E /* LightGrid.swift */; };
+		91EC9A8F2A28E1EB000E994E /* CoordinatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A8E2A28E1EB000E994E /* CoordinatePair.swift */; };
+		91EC9A912A28E227000E994E /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A902A28E227000E994E /* Light.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		91EC9A782A28DE79000E994E /* ChristmasLightsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChristmasLightsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91EC9A7C2A28DE79000E994E /* ChristmasLightsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasLightsUITests.swift; sourceTree = "<group>"; };
 		91EC9A7E2A28DE79000E994E /* ChristmasLightsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasLightsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		91EC9A8B2A28DE95000E994E /* LightGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGrid.swift; sourceTree = "<group>"; };
+		91EC9A8E2A28E1EB000E994E /* CoordinatePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatePair.swift; sourceTree = "<group>"; };
+		91EC9A902A28E227000E994E /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		91EC9A5A2A28DE77000E994E /* ChristmasLights */ = {
 			isa = PBXGroup;
 			children = (
+				91EC9A8D2A28E1D8000E994E /* Models */,
 				91EC9A5B2A28DE77000E994E /* AppDelegate.swift */,
 				91EC9A5D2A28DE77000E994E /* SceneDelegate.swift */,
 				91EC9A5F2A28DE77000E994E /* ViewController.swift */,
@@ -125,6 +132,16 @@
 				91EC9A7E2A28DE79000E994E /* ChristmasLightsUITestsLaunchTests.swift */,
 			);
 			path = ChristmasLightsUITests;
+			sourceTree = "<group>";
+		};
+		91EC9A8D2A28E1D8000E994E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				91EC9A8E2A28E1EB000E994E /* CoordinatePair.swift */,
+				91EC9A902A28E227000E994E /* Light.swift */,
+				91EC9A8B2A28DE95000E994E /* LightGrid.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +275,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91EC9A912A28E227000E994E /* Light.swift in Sources */,
+				91EC9A8F2A28E1EB000E994E /* CoordinatePair.swift in Sources */,
+				91EC9A8C2A28DE95000E994E /* LightGrid.swift in Sources */,
 				91EC9A602A28DE77000E994E /* ViewController.swift in Sources */,
 				91EC9A5C2A28DE77000E994E /* AppDelegate.swift in Sources */,
 				91EC9A5E2A28DE77000E994E /* SceneDelegate.swift in Sources */,
