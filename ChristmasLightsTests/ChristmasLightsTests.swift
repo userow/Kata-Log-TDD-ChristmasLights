@@ -59,7 +59,6 @@ final class ChristmasLightsTests: XCTestCase {
 
 		for row in 0...10 { //999
 			for col in 0...10 { //999
-				print("testShouldToggleFirstRow row - \(row), col = \(col)")
 				let light = lightGrid.getLight(row: row, col: col)
 				dump(light)
 

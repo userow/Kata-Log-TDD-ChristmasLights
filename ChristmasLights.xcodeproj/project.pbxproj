@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91B197212A29FA3E00075F04 /* String+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B197202A29FA3E00075F04 /* String+Pointer.swift */; };
 		91EC9A5C2A28DE77000E994E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A5B2A28DE77000E994E /* AppDelegate.swift */; };
 		91EC9A5E2A28DE77000E994E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A5D2A28DE77000E994E /* SceneDelegate.swift */; };
 		91EC9A602A28DE77000E994E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EC9A5F2A28DE77000E994E /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		91B197202A29FA3E00075F04 /* String+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Pointer.swift"; sourceTree = "<group>"; };
 		91EC9A582A28DE77000E994E /* ChristmasLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChristmasLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91EC9A5B2A28DE77000E994E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91EC9A5D2A28DE77000E994E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91B1971F2A29F9D200075F04 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				91B197202A29FA3E00075F04 /* String+Pointer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		91EC9A4F2A28DE77000E994E = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		91EC9A5A2A28DE77000E994E /* ChristmasLights */ = {
 			isa = PBXGroup;
 			children = (
+				91B1971F2A29F9D200075F04 /* Extensions */,
 				91EC9A8D2A28E1D8000E994E /* Models */,
 				91EC9A5B2A28DE77000E994E /* AppDelegate.swift */,
 				91EC9A5D2A28DE77000E994E /* SceneDelegate.swift */,
@@ -277,6 +288,7 @@
 			files = (
 				91EC9A912A28E227000E994E /* Light.swift in Sources */,
 				91EC9A8F2A28E1EB000E994E /* CoordinatePair.swift in Sources */,
+				91B197212A29FA3E00075F04 /* String+Pointer.swift in Sources */,
 				91EC9A8C2A28DE95000E994E /* LightGrid.swift in Sources */,
 				91EC9A602A28DE77000E994E /* ViewController.swift in Sources */,
 				91EC9A5C2A28DE77000E994E /* AppDelegate.swift in Sources */,

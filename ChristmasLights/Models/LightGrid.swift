@@ -7,8 +7,11 @@
 
 import Foundation
 
+typealias ProcessLight = (Light) -> Void
+
 class LightGrid {
 
+//	//second option for storage - WORKS
 //	var lights: [[Light]]
 //
 //	init() {
@@ -21,46 +24,67 @@ class LightGrid {
 //		}
 //	}
 
-	// !!! NOT
+//	//!!! NOT Working - 1 instance linked to all cells of array
 	var lights: [[Light]] = Array(repeating: Array(repeating: Light(), count: 1_000), count: 1_000)
+
+		/*
+		 Test Case '-[ChristmasLightsTests.ChristmasLightsTests testShouldToggleFirstRow]' started.
+
+		 LightGrid toggle - coord: CoordinatePair(leftTopRow: 0, leftTopCol: 0, rightBottomRow: 0, rightBottomCol: 10)
+
+		 processLight - row - 0, col = 0
+		 processLight - pre Process - ChristmasLights.Light - 0x00006000030c9040 🤣
+		 ▿ ChristmasLights.Light #0
+		   - on: false
+		 processLight - after Process - ChristmasLights.Light - 0x00006000030c9040 🤣
+		 ▿ ChristmasLights.Light #0
+		   - on: true
+
+		 processLight - row - 0, col = 1
+		 processLight - pre Process - ChristmasLights.Light - 0x00006000030c9040 🤣
+		 ▿ ChristmasLights.Light #0
+		   - on: true
+		 processLight - after Process - ChristmasLights.Light - 0x00006000030c9040 🤣
+		 ▿ ChristmasLights.Light #0
+		   - on: false
+		 */
 
 	func getLight(row: Int, col: Int) -> Light {
 		return lights[row][col]
 	}
 
-	func turnOn(_ coord: CoordinatePair) {
+	func process(coord: CoordinatePair, processLight: ProcessLight) {
 		for row in coord.leftTopRow...coord.rightBottomRow {
 			for col in coord.leftTopCol...coord.rightBottomCol {
+				print("\nprocessLight - row - \(row), col = \(col)")
 				let light = getLight(row: row, col: col)
-				print("turn on - row - \(row), col = \(col)")
+				print("processLight - pre Process - \(light) - \(String.pointer(light))")
 				dump(light)
-				light.turnOn()
+				processLight(light)
+				print("processLight - after Process - \(light) - \(String.pointer(light))")
 				dump(light)
 			}
+		}
+	}
+
+	func turnOn(_ coord: CoordinatePair) {
+		print("\nLightGrid turnOn - coord: \(coord)")
+		process(coord: coord) { light in
+			light.turnOn()
 		}
 	}
 
 	func turnOff(_ coord: CoordinatePair) {
-		for row in coord.leftTopRow...coord.rightBottomRow {
-			for col in coord.leftTopCol...coord.rightBottomCol {
-				let light = getLight(row: row, col: col)
-				print("turn off - row - \(row), col = \(col)")
-				dump(light)
-				light.turnOff()
-				dump(light)
-			}
+		print("\nLightGrid turnOff - coord: \(coord)")
+		process(coord: coord) { light in
+			light.turnOff()
 		}
 	}
 
 	func toggle(_ coord: CoordinatePair) {
-		for row in coord.leftTopRow...coord.rightBottomRow {
-			for col in coord.leftTopCol...coord.rightBottomCol {
-				let light = getLight(row: row, col: col)
-				print("toggle - row - \(row), col = \(col)")
-				dump(light)
-				light.toggle()
-				dump(light)
-			}
+		print("\nLightGrid toggle - coord: \(coord)")
+		process(coord: coord) { light in
+			light.toggle()
 		}
 	}
 }
