@@ -39,33 +39,33 @@ final class ChristmasLightsTests: XCTestCase {
 
 	func testShouldTurnOnAllLights() throws {
 		let lightGrid = LightGrid()
-		lightGrid.turnOn(CoordinatePair(0, 0, 10, 10))
+		lightGrid.turnOn(CoordinatePair(0, 0, 999, 999))
 
 		continueAfterFailure = false
 
-		for row in 0...10 { //999
-			for col in 0...10 { //999
+		for row in 0...999 { //999
+			for col in 0...999 { //999
 				XCTAssert(lightGrid.getLight(row: row, col: col).isOn(), "Light is not on")
 			}
 		}
 	}
 
 	func testShouldToggleFirstRow() throws {
-		let coord = CoordinatePair(0, 0, 0, 10)
+		let coord = CoordinatePair(0, 0, 0, 999)
 
 		lightGrid.toggle(coord)
 
 		continueAfterFailure = false
 
-		for row in 0...10 { //999
-			for col in 0...10 { //999
+		for row in 0...999 { //999
+			for col in 0...999 { //999
 				let light = lightGrid.getLight(row: row, col: col)
-				dump(light)
+//				dump(light)
 
 				if row == 0 {
-					XCTAssert(lightGrid.getLight(row: row, col: col).isOn(), "Light in first row is not on")
+					XCTAssert(light.isOn(), "Light in first row is not on")
 				} else {
-					XCTAssert(lightGrid.getLight(row: row, col: col).isOn() == false, "Light in NOT first row is not off")
+					XCTAssert(light.isOn() == false, "Light in NOT first row is not off")
 				}
 			}
 		}
