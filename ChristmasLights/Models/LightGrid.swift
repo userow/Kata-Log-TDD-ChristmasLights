@@ -56,13 +56,13 @@ class LightGrid {
 	func process(coord: CoordinatePair, processLight: ProcessLight) {
 		for row in coord.leftTopRow...coord.rightBottomRow {
 			for col in coord.leftTopCol...coord.rightBottomCol {
-				print("\nprocessLight - row - \(row), col = \(col)")
+//				print("\nprocessLight - row - \(row), col = \(col)")
 				let light = getLight(row: row, col: col)
-				print("processLight - pre Process - \(light) - \(String.pointer(light))")
-				dump(light)
+//				print("processLight - pre Process - \(light) - \(String.pointer(light))")
+//				dump(light)
 				processLight(light)
-				print("processLight - after Process - \(light) - \(String.pointer(light))")
-				dump(light)
+//				print("processLight - after Process - \(light) - \(String.pointer(light))")
+//				dump(light)
 			}
 		}
 	}
