@@ -11,21 +11,21 @@ typealias ProcessLight = (Light) -> Void
 
 class LightGrid {
 
-//	//second option for storage - WORKS
-//	var lights: [[Light]]
-//
-//	init() {
-//		lights = [[Light]]()
-//		for row in 0...999 {
-//			lights.append([Light]())
-//			for _ in 0...999 {
-//				lights[row].append(Light())
-//			}
-//		}
-//	}
+	//second option for storage - WORKS
+	var lights: [[Light]]
+
+	init() {
+		lights = [[Light]]()
+		for row in 0...999 {
+			lights.append([Light]())
+			for _ in 0...999 {
+				lights[row].append(Light())
+			}
+		}
+	}
 
 //	//!!! NOT Working - 1 instance linked to all cells of array
-	var lights: [[Light]] = Array(repeating: Array(repeating: Light(), count: 1_000), count: 1_000)
+//	var lights: [[Light]] = Array(repeating: Array(repeating: Light(), count: 1_000), count: 1_000)
 
 		/*
 		 Test Case '-[ChristmasLightsTests.ChristmasLightsTests testShouldToggleFirstRow]' started.
