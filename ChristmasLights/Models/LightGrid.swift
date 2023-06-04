@@ -11,6 +11,13 @@ typealias ProcessLight = (Light) -> Void
 
 class LightGrid {
 
+	private let kLoggingOn = false
+
+	//TODO: on raf interview - settings for class in private enum
+//	private enum Settings {
+//	kLoggingOn = false
+//	}
+
 	//second option for storage - WORKS
 	var lights: [[Light]]
 
@@ -25,12 +32,12 @@ class LightGrid {
 	}
 
 //	//!!! NOT Working - 1 instance linked to all cells of array
-//	var lights: [[Light]] = Array(repeating: Array(repeating: Light(), count: 1_000), count: 1_000)
+//	private var lights: [[Light]] = Array(repeating: Array(repeating: Light(), count: 1_000), count: 1_000)
 
 		/*
 		 Test Case '-[ChristmasLightsTests.ChristmasLightsTests testShouldToggleFirstRow]' started.
 
-		 LightGrid toggle - coord: CoordinatePair(leftTopRow: 0, leftTopCol: 0, rightBottomRow: 0, rightBottomCol: 10)
+		 LightGrid toggle - coord: CoordinatePair(leftTopX: 0, leftTopY: 0, rightBottomX: 10, rightBottomY: 0)
 
 		 processLight - row - 0, col = 0
 		 processLight - pre Process - ChristmasLights.Light - 0x00006000030c9040 🤣
@@ -49,20 +56,26 @@ class LightGrid {
 		   - on: false
 		 */
 
-	func getLight(row: Int, col: Int) -> Light {
+	private func getLight(row: Int, col: Int) -> Light {
 		return lights[row][col]
 	}
 
 	func process(coord: CoordinatePair, processLight: ProcessLight) {
-		for row in coord.leftTopRow...coord.rightBottomRow {
-			for col in coord.leftTopCol...coord.rightBottomCol {
-//				print("\nprocessLight - row - \(row), col = \(col)")
+		for row in coord.leftTopY...coord.rightBottomY {
+			for col in coord.leftTopX...coord.rightBottomX {
+
 				let light = getLight(row: row, col: col)
-//				print("processLight - pre Process - \(light) - \(String.pointer(light))")
-//				dump(light)
+
+				if kLoggingOn {
+					print("\nprocessLight - row - \(row), col = \(col)")
+					print("processLight - pre Process - \(light) - \(String.pointer(light))")
+					dump(light)
+				}
 				processLight(light)
-//				print("processLight - after Process - \(light) - \(String.pointer(light))")
-//				dump(light)
+				if kLoggingOn {
+					print("processLight - after Process - \(light) - \(String.pointer(light))")
+					dump(light)
+				}
 			}
 		}
 	}

@@ -22,9 +22,9 @@ final class ChristmasLightsTests: XCTestCase {
 		continueAfterFailure = true
     }
 
-	func testShouldCreateLightGrid() throws {
-		let initedLightGrid = LightGrid()
-		XCTAssertNotNil(initedLightGrid, "LightGrid not created")
+	func testShouldCreateLight() throws {
+		let initedLight = Light()
+		XCTAssertNotNil(initedLight, "Light not created")
 	}
 
 	func testShouldCreateCoordinatePair() throws {
@@ -32,44 +32,85 @@ final class ChristmasLightsTests: XCTestCase {
 		XCTAssertNotNil(coordPair, "CoordinatePair not created")
 	}
 
-	func testShouldCreateLight() throws {
-		let initedLight = Light()
-		XCTAssertNotNil(initedLight, "Light not created")
+	func testShouldCreateLightGrid() throws {
+		let initedLightGrid = LightGrid()
+		XCTAssertNotNil(initedLightGrid, "LightGrid not created")
 	}
 
 	func testShouldTurnOnAllLights() throws {
-		let lightGrid = LightGrid()
-		lightGrid.turnOn(CoordinatePair(0, 0, 999, 999))
+		//given
+		let allCoords = CoordinatePair(0, 0, 999, 999)
 
+		//when
+		lightGrid.turnOn(allCoords)
+
+		//then
 		continueAfterFailure = false
 
-		for row in 0...999 { //999
-			for col in 0...999 { //999
-				XCTAssert(lightGrid.getLight(row: row, col: col).isOn(), "Light is not on")
-			}
+		lightGrid.process(coord: allCoords) { light in
+			XCTAssertEqual(light.isOn(), true, "Light is not on")
 		}
+
 	}
 
 	func testShouldToggleFirstRow() throws {
-		let coord = CoordinatePair(0, 0, 0, 999)
 
-		lightGrid.toggle(coord)
+		// given
+		let coordOn = CoordinatePair(0, 0, 999, 0)
+
+		// when
+		lightGrid.toggle(coordOn)
+
+		// then
+		let coordOff = CoordinatePair(0, 1, 999, 999)
 
 		continueAfterFailure = false
 
-		for row in 0...999 { //999
-			for col in 0...999 { //999
-				let light = lightGrid.getLight(row: row, col: col)
-//				dump(light)
-
-				if row == 0 {
-					XCTAssert(light.isOn(), "Light in first row is not on")
-				} else {
-					XCTAssert(light.isOn() == false, "Light in NOT first row is not off")
-				}
-			}
+		lightGrid.process(coord: coordOn) { light in
+			XCTAssertEqual(light.isOn(), true, "Light in first row is not on")
 		}
 
+		lightGrid.process(coord: coordOff) { light in
+			XCTAssertEqual(light.isOn(), false, "Light in NOT first row is not off")
+		}
+	}
+
+	func testShouldTurnOffFourLightsInTheMiddle() throws {
+		// given
+		let allCoords = CoordinatePair(0, 0, 999, 999)
+		let fourInCenterCoords = CoordinatePair(499,499,500,500)
+
+		// when
+		lightGrid.turnOn(allCoords)
+		lightGrid.turnOff(fourInCenterCoords)
+
+		// then
+		let topPartCoords = CoordinatePair(0, 0, 999, 498)
+		let leftBottomCoords = CoordinatePair(0, 499, 498, 999)
+		let centerBottomCoords = CoordinatePair(499, 501, 500, 999)
+		let rightBottomCoords = CoordinatePair(501, 499, 999, 999)
+
+		continueAfterFailure = false
+
+		lightGrid.process(coord: fourInCenterCoords) { light in
+			XCTAssertEqual(light.isOn(), false, "Light in middle four is not off")
+		}
+
+		lightGrid.process(coord: topPartCoords) { light in
+			XCTAssertEqual(light.isOn(), true, "Light in topPartCoords is not on")
+		}
+
+		lightGrid.process(coord: leftBottomCoords) { light in
+			XCTAssertEqual(light.isOn(), true, "Light in leftBottomCoords is not on")
+		}
+
+		lightGrid.process(coord: centerBottomCoords) { light in
+			XCTAssertEqual(light.isOn(), true, "Light in centerBottomCoords is not on")
+		}
+
+		lightGrid.process(coord: rightBottomCoords) { light in
+			XCTAssertEqual(light.isOn(), true, "Light in rightBottomCoords is not on")
+		}
 	}
 
 //    func testExample() throws {
